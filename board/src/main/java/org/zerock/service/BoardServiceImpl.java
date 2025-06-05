@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
-@AllArgsConstructor // 모든 파라미터를 이용하는 생성자를 만듦
+@AllArgsConstructor // 모든 파라미터를 이용하는 생성자를 만듦 생성자 선언하지 않을 시에는 @Setter 꼭 사용!!!
 public class BoardServiceImpl implements BoardService{
 	
 	// 서비스에서 model을 호출하기 위해서 필수적으로 선언.
