@@ -14,11 +14,11 @@
 	
 	<!-- 별도의 key를 검색해서 insert SQL을 한 번 더 실행하는 부담이 있기는 하지만 자동으로 추가되는 PK 값을 확인해야 하는 상황에서는 유용하다. -->
 	<insert id="insertSelectKey">
-		<selectKey keyProperty="bon" order="BEFORE" resultType="long">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
 			select seq_board.nextval from dual
 		</selectKey>
 		
-		insert into tbl_board(bno, title, content, writer) values(#{bon}, #{title}, #{content}, #{writer})
+		insert into tbl_board(bno, title, content, writer) values(#{bno}, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="read" resultType="org.zerock.domain.BoardVO">

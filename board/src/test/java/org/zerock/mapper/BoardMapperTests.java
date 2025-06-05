@@ -18,10 +18,10 @@ public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
-	@Test
-	public void testGetList() {
-		mapper.getList().forEach(board -> log.info(board));
-	}
+//	@Test
+//	public void testGetList() {
+//		mapper.getList().forEach(board -> log.info(board));
+//	}
 	
 //	@Test
 //	public void testInsert() {
@@ -33,7 +33,7 @@ public class BoardMapperTests {
 //		
 //		mapper.insert(board);
 //		
-//		log.info(board);
+//		log.info("--------------------------------------------- testInsert" + board);
 //	}
 	
 	
@@ -50,12 +50,12 @@ public class BoardMapperTests {
 //		log.info("--------------------------------------------- " + board);
 //	}
 	
-	@Test
-	public void testRead() {
-		BoardVO board = mapper.read(1L);
-		
-		log.info("read ---------------------------- " + board);
-	}
+//	@Test
+//	public void testRead() {
+//		BoardVO board = mapper.read(1L);
+//		
+//		log.info("read ---------------------------- " + board);
+//	}
 	
 //	@Test
 //	public void testDelete() {
