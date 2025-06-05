@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	
+	<select id="getList" resultType="org.zerock.domain.BoardVO">
+		<![CDATA[SELECT * FROM tbl_board where bno > 0 ]]>
+	</select>
+	
+	<!-- sql 함수로 key를 바로 처리 -->
+	<insert id="insert">
+		insert into tbl_board(bno, title, content, writer) values(seq_board.nextval, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<!-- 별도의 key를 검색해서 insert SQL을 한 번 더 실행하는 부담이 있기는 하지만 자동으로 추가되는 PK 값을 확인해야 하는 상황에서는 유용하다. -->
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="bon" order="BEFORE" resultType="long">
+			select seq_board.nextval from dual
+		</selectKey>
+		
+		insert into tbl_board(bno, title, content, writer) values(#{bon}, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board where bno = #{bno}
+	</select>
+	
+	<delete id="delete">
+		delete from tbl_board where bno = #{bno}
+	</delete>
+	
+	<update id="update">
+		update tbl_board set title = #{title}, content=#{content}, writer=#{writer}, updateDate = sysdate where bno = #{bno}
+	</update>
+</mapper>
