@@ -43,12 +43,13 @@ public class BoardServiceTests {
 //		log.info("-------------------------- testRegister " + board.getBno());
 //	}
 	
-//	@Test
-//	public void testGetList() {
-//		log.info("-------------------------- testGetList");
+	@Test
+	public void testGetList() {
+		log.info("-------------------------- testGetList");
 //		service.getList().forEach(board -> log.info(board));
-//		
-//	}
+		service.getList(new Criteria(2, 10)).forEach(board -> log.info(board));
+		
+	}
 	
 	@Test
 	public void testGetList() {
