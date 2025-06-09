@@ -38,11 +38,16 @@ public class BoardControllerTests {
 		
 		log.info("------------------------------------------ testList");
 		
+//		log.info(
+//				mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
+//				.andReturn()
+//				.getModelAndView()
+//				.getModelMap());
+		
 		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
-				.andReturn()
-				.getModelAndView()
-				.getModelMap());
+				mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
+						.param("pageNum", "2").param("amount", "4"))
+				.andReturn().getModelAndView().getModelMap());
 	}
 	
 	@Test
