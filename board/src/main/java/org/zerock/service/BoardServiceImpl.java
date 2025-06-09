@@ -53,13 +53,27 @@ public class BoardServiceImpl implements BoardService{
 		
 		return mapper.delete(bno) == 1;
 	}
-	
+
 	@Override
 	public List<BoardVO> getList(Criteria cri) {
-
-		log.info("--------------------------- getList ");
+		log.info("get List with criteria: " + cri);
 		
 		return mapper.getListWithPaging(cri);
 	}
+
+//	@Override
+//	public List<BoardVO> getList() {
+//
+//		log.info("--------------------------- getList ");
+//		
+//		return mapper.getList();
+//	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		
+		return mapper.getTotalCount(cri);
+	}
+	
 
 }
