@@ -45,10 +45,7 @@ public class BoardServiceTests {
 	
 	@Test
 	public void testGetList() {
-		log.info("-------------------------- testGetList");
-//		service.getList().forEach(board -> log.info(board));
-		service.getList(new Criteria(2, 10)).forEach(board -> log.info(board));
-		
+		service.getList(new Criteria(2, 4)).forEach(board -> log.info(board));
 	}
 	
 //	@Test

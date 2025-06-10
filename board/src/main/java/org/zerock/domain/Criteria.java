@@ -1,19 +1,16 @@
 package org.zerock.domain;
 
-import javax.security.auth.login.CredentialException;
-
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
 public class Criteria {
-	
+
 	private int pageNum;
 	private int amount;
-	
-	private String type;
-	private String keyword;
 	
 	public Criteria() {
 		this(1,10);
@@ -23,9 +20,4 @@ public class Criteria {
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}
-	
-	public String[] getTypeArr() {
-		return type == null ? new String[] {}: type.split("");
-	}
-
 }

@@ -19,13 +19,16 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<form role="form" action="/board/modify" method="post">
+							<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum }" />'>
+							<input type='hidden' name='amount' value='<c:out value="${cri.amount }" />'>
+						
 							<div class="form-group">
-								<label>Bno</label>
-								<input class="form-control" name='bno' value='<c:out value="${board.bno }" />' readonly="readonly"/>
+								<label>Bno</label> <input class="form-control" name='bno'
+									value='<c:out value="${board.bno }" />' readonly="readonly" />
 							</div>
 							<div class="form-group">
-								<label>Title</label> 
-								<input class="form-control" name='title' value='<c:out value="${board.title }" />'> 
+								<label>Title</label> <input class="form-control" name='title'
+									value='<c:out value="${board.title }" />'>
 							</div>
 							<div class="form-group">
 								<label>Text area</label>
@@ -34,27 +37,27 @@
 								</textarea>
 							</div>
 							<div class="form-group">
-								<label>Writer</label> 
-								<input class="form-control" name='writer' value='<c:out value="${board.writer }" />' readonly="readonly"/>
-							</div>
-							
-							<div class="form-group">
-								<label>RegDate</label> 
-								<input class="form-control" name='regDate' 
-								value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${board.regdate }" />' readonly="readonly"/>
-							</div>
-							
-							<div class="form-group">
-								<label>Update Date</label> 
-								<input class="form-control" name='updateDate' 
-								value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${board.updateDate }" />'
-								readonly="readonly"/>
+								<label>Writer</label> <input class="form-control" name='writer'
+									value='<c:out value="${board.writer }" />' readonly="readonly" />
 							</div>
 
-							<button type="submit" data-oper='modify' class="btn btn-default">Submit Button</button>
-							<button type="submit" data-oper='modify' class="btn btn-danger">Remove</button>
-							<button type="submit" data-oper='modify' class="btn btn-info"
-								onclick="location.href='/board/list'">List</button>
+							<div class="form-group">
+								<label>RegDate</label> <input class="form-control"
+									name='regDate'
+									value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${board.regdate }" />'
+									readonly="readonly" />
+							</div>
+
+							<div class="form-group">
+								<label>Update Date</label> <input class="form-control"
+									name='updateDate'
+									value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${board.updateDate }" />'
+									readonly="readonly" />
+							</div>
+
+							<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+							<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+							<button type="submit" data-oper='list' class="btn btn-info" >List</button>
 						</form>
 					</div>
 				</div>
@@ -77,14 +80,22 @@
 				
 				if(operation === 'remove') {
 					formObj.attr("action", "/board/remove");
-				}else if(operation === 'list') {
-					formObj.sttr("action", "/board/list").attr("method", "get");
+				} else if(operation === 'list') {
+					formObj.attr("action", "/board/list").attr("method", "get");
+					
+					let pageNumTag = $("input[name='pageNum']").clone();
+					let amountTag = $("input[name='amount']").clone();
+					
 					formObj.empty();
+					formObj.append(pageNumTag);
+					formObj.append(amountTag);
 				}
+				
 				formObj.submit();
+				
 			});
+			
 		});
-		
 	</script>
 </div>
 

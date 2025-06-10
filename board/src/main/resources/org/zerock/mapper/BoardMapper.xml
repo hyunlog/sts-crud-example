@@ -30,11 +30,12 @@
 	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
 		<![CDATA[
 			select bno, title, content, writer, regdate, updatedate from 
-			( 
-				select /*+INDEX_DESC(tbl_board pk_board) */
-					rownum rn, bno, title, content, writer, regdate, updatedate
+			(
+				select /*+INDEX_DESC(tbl_board pk_obard) */
+					rownum rn, bno, title, content, writer, regdate, updatedate 
 				from
 					tbl_board
+<<<<<<< HEAD
 				where 
 		]]>
 		
@@ -42,10 +43,16 @@
 		
 		<![CDATA[
 			rownum <= #{pageNum} *#{amount}
+=======
+				where rownum <= #{pageNum} * ${amount}
+>>>>>>> branch 'main' of https://github.com/hyunlog/sts-crud-example.git
 			)
+<<<<<<< HEAD
 		where rn > (#{pageNum} -1)* #{amount}
+=======
+			where rn > (#{pageNum} -1) * #{amount}
+>>>>>>> branch 'main' of https://github.com/hyunlog/sts-crud-example.git
 		]]>
-	
 	</select>
 	
 	<!-- sql 함수로 key를 바로 처리 -->
@@ -73,4 +80,8 @@
 	<update id="update">
 		update tbl_board set title = #{title}, content=#{content}, writer=#{writer}, updateDate = sysdate where bno = #{bno}
 	</update>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_board where bno > 0
+	</select>
 </mapper>
