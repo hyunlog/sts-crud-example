@@ -35,23 +35,15 @@
 					rownum rn, bno, title, content, writer, regdate, updatedate 
 				from
 					tbl_board
-<<<<<<< HEAD
 				where 
 		]]>
 		
 		<include refid="criteria"></include>
 		
 		<![CDATA[
-			rownum <= #{pageNum} *#{amount}
-=======
-				where rownum <= #{pageNum} * ${amount}
->>>>>>> branch 'main' of https://github.com/hyunlog/sts-crud-example.git
+			rownum <= #{pageNum} * #{amount}
 			)
-<<<<<<< HEAD
-		where rn > (#{pageNum} -1)* #{amount}
-=======
 			where rn > (#{pageNum} -1) * #{amount}
->>>>>>> branch 'main' of https://github.com/hyunlog/sts-crud-example.git
 		]]>
 	</select>
 	

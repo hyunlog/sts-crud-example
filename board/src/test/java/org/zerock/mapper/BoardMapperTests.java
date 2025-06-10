@@ -21,16 +21,16 @@ public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
-	@Test
-	public void testPaging() {
-		Criteria cri = new Criteria();
-		cri.setPageNum(3);
-		cri.setAmount(4);
-		
-		
-		List<BoardVO> list = mapper.getListWithPaging(cri);
-		list.forEach(board -> log.info(board));
-	}
+//	@Test
+//	public void testPaging() {
+//		Criteria cri = new Criteria();
+//		cri.setPageNum(3);
+//		cri.setAmount(4);
+//		
+//		
+//		List<BoardVO> list = mapper.getListWithPaging(cri);
+//		list.forEach(board -> log.info(board));
+//	}
 	
 //	@Test
 //	public void testGetList() {
@@ -90,4 +90,16 @@ public class BoardMapperTests {
 //		int count = mapper.update(board);
 //		log.info("UPDATE COUNT: " + count);
 //	}
+	
+	@Test
+	 public void testSearch() {
+		
+		Criteria cri = new Criteria();
+		cri.setKeyword("새로");
+		cri.setType("TC");
+		
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		
+		list.forEach(board -> log.info(board));
+	}
 }
